@@ -2,7 +2,7 @@ import numpy as np
 import re
 ##testing testing testing
 ##edit this file
-fp=open("filename","r")
+fp=open("HOD.txt","r")
 contents=fp.read()
 seeker = re.compile("[\.!?]")
 seeker.split(contents)
