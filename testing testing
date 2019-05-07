@@ -1,4 +1,8 @@
 import numpy as np
+import re
 ##testing testing testing
 ##edit this file
-nouns
+fp=open("filename","r")
+contents=fp.read()
+seeker = re.compile("[\.!?]")
+seeker.split(contents)
