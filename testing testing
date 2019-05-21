@@ -61,3 +61,30 @@ capped = [k for k in capped if k not in["I", "The", "A","In","We","On","He","It"
                                        ,'Yes','Rivets','Fine']]
 print(capped) #list of proper nouns
 print(len(capped)) #number of proper nouns
+
+#conjunctions
+import re
+fp=open("HODwoutenters.txt","r")
+contents=fp.read()
+seeker = re.compile("[\.!?]")
+book=seeker.split(contents)
+words=[]
+for x in book:
+    for j in x.split():
+        words.append(j)
+
+Corrdinating = [k for k in words if k in ["For","for","And","and","But","but","Or","or","Yet","yet","So","so"]]
+print("The number of Corrdinating Conjunctions is", len(Corrdinating))
+
+Subordinating = [k for k in words if k in ["after","although","as","as if","if","in order that","in case",
+                                          "as long as","as much as","as soon as","lest","once","only if",
+                                          "as though","because","before","provided that","since","so that",
+                                          "by the time", "even if",  "even though","than","that","though","till",
+                                           "unless","until","when","whenever","where","wherever","while"]]
+print("The number of Subordinating Conjunctions is", len(Subordinating))
+
+Correlative = [k for k in words if k in ["both","either","neither","not only","whether"]]
+
+
+
+
