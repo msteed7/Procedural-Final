@@ -23,3 +23,41 @@ frequency_list = frequency.keys()
 
 for words in frequency_list:
   print (words, frequency[words])
+  
+#proper nouns
+fp=open("HODwoutenters.txt","r")
+contents=fp.read()
+contents=contents.replace("--","  ")
+contents=contents.replace(","," ")
+seeker = re.compile("[\.!?]")
+book=seeker.split(contents)
+words=[]
+for x in book:
+    for j in x.split():
+        words.append(j)
+print(words[0])
+
+capped = [k for k in words if "A" <= k[0] <= "Z"]
+#print(capped)
+capped = [k for k in capped if k not in["I", "The", "A","In","We","On","He","It","At","Between","Besides","Afterwards",
+                                       "For","And","No","They","But","I","Only","For","His","Yes;","Oh","No,","Did","Well"
+                                       "Then","I,","Or","You","If","Who","What","Lights","Their",'YOU', 'AGREE', 'THAT', 'YOU', 'HAVE', 'NO',
+                                        'REMEDIES', 'FOR', 'NEGLIGENCE,','NEGLIGENCE', 'STRICT', 'LIABILITY,', 'BREACH', 'WARRANTY',
+                                        'OR', 'BREACH', 'OF', 'CONTRACT', 'EXCEPT', 'THOSE', 'PROVIDED', 'IN', 'PARAGRAPH',
+                                        'F3', 'YOU', 'AGREE', 'THE', 'FOUNDATION,', 'TRADEMARK', 'OWNER,','Knights'
+                                        , 'AND', 'ANY', 'DISTRIBUTOR', 'UNDER', 'THIS', 'AGREEMENT', 'WILL', 'NOT', 'BE',
+                                        'LIABLE', 'TO', 'YOU', 'FOR', 'ACTUAL,', 'DIRECT,', 'INDIRECT,', 'CONSEQUENTIAL,',
+                                        'PUNITIVE', 'OR', 'INCIDENTAL', 'DAMAGES', 'EVEN', 'YOU', 'GIVE', 'NOTICE', 
+                                         'POSSIBILITY', 'SUCH', 'DAMAGE', 'LIMITED', 'RIGHT', 'OF','Light','Imagine',
+                                        'REPLACEMENT', 'OR', 'REFUND', 'F', 'Except', 'WITH','Sandbanks,',"Here","There's",
+                                        'NO', 'OTHER', 'WARRANTIES', 'OF', 'ANY', 'KIND,', 'EXPRESS', 'OR', 'IMPLIED,',
+                                        'INCLUDING', 'BUT', 'NOT', 'LIMITED', 'TO', 'WARRANTIES','MERCHANTIBILITY', 'An',
+                                         'FITNESS', 'FOR', 'ANY', 'PURPOSE', 'F', 'Some', 'If', 'INDEMNITY','Forthwith','Hunters','One'
+                                       ,"Well,","Other","Then","Why","Street", "This","So","She","Its","From","Yes,","Not","Oh","There"
+                                       ,"Therefore","Oh,","These","Then","Nothing", "I've","My","Was","By","Is","It's","When","Before","Two","All"
+                                       ,"Don't", "One's",'People','While','Deal','Once','Good-by','Still','V-shaped','E',
+                                       'Within','Well','As','To','Most','See','Sometimes','Finally','Often',"I'll",'I;','Her','After',
+                                       'Behind','Like', 'Just','Am',"That's","Hadn't",'Do',"Can't",'Six','Moreover','Very','Everyone','Certainly'
+                                       ,'Yes','Rivets','Fine']]
+print(capped) #list of proper nouns
+print(len(capped)) #number of proper nouns
