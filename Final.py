@@ -2,6 +2,7 @@ import numpy as np
 import re
 fp=open("HODwoutenters.txt","r")
 contents=fp.read()
+contents.replace("\n", " ")
 seeker = re.compile("[\.!?]")
 sentences = seeker.split(contents)
 total = 0
