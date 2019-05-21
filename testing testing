@@ -1,15 +1,24 @@
-#import numpy as np
-#import re
-##testing testing testing
-##edit this file
-#fp=open("HODwoutenters.txt","r")
-#contents=fp.read()
-#seeker = re.compile("[\.!?]")
-#seeker.split(contents)
-
-
+import numpy as np
 import re
+fp=open("HODwoutenters.txt","r")
+contents=fp.read()
+seeker = re.compile("[\.!?]")
+sentences = seeker.split(contents)
+total = 0
+for k in sentences:
+    words = k.split(" ")
+    length = len(words)
+    total += length
+    
+average = total / len(sentences)
+print("The average sentence in this document is",average,"words.")
+print()
+print("There are",len(sentences),"sentences in this document.")
+print()
+
 import string
+import operator
+search_word = input("Provide word:   ")
 frequency = {}
 document_text = open("HODwoutenters.txt", "r")
 text_string = document_text.read().lower()
@@ -18,11 +27,44 @@ match_pattern = re.findall(r'\b[a-z]{3,25}\b', text_string)
 for word in match_pattern:
   count = frequency.get(word,0)
   frequency[word] = count + 1
+    
 
-frequency_list = frequency.keys()
+sorted_frequencies = sorted(frequency.items(), key=operator.itemgetter(1), reverse = True)
 
-for words in frequency_list:
-  print (words, frequency[words])
+isWord = 0
+
+for word, frequency in frequency.items():
+    if word == search_word:
+        isWord += 1
+        print("This word appears",frequency,"time(s).")
+
+if isWord != 1:
+    print("Sorry! This word does not appear in this document.")
+
+print()
+
+prepositions = ("aboard", "along", "amid", "as", "beneath", "beyond", "but", "concerning", "considering", "despite", "except", "following", "like", "minus", "next", "onto", "opposite", "outside", "past", "per", "plus", "regarding", "round", "save", "since", "than", "underneath", "unlike", "until", "upon", "versus", "via", "within", "wihtout")
+
+preps = 0
+
+pronouns = ("I", "we", "you", "he", "she", "it", "they", "me", "us", "her", "him", "it", "them", "mine", "ours", "yours", "hers", "his", "theirs", "my", "our", "your", "her", "their", "myself", "yourself", "herself", "himself", "itself", "ourselves", "yourselves", "themselves", "myself", "yourself", "herself", "himself", "itself", "ourselves", "yourselves", "themselves", "all", "another", "any", "anybody", "anyone", "anything", "both", "each", "either", "everybody", "everyone", "everything", "few", "many", "most", "neither", "nobody", "none", "nothing", "one", "other", "others", "several", "some", "somebody", "someone", "something", "such", "that", "these", "this", "those", "what", "whatever", "which", "whichever", "who", "whoever", "whom", "whomever", "whose", "as", "what", "thou", "thee", "thy", "thine", "ye")
+
+pros = 0
+
+for k in sentences:
+    words = k.split(" ")
+    for k in words:
+        if k in prepositions:
+            preps += 1
+        if k in pronouns:
+            pros += 1
+        
+print("There are",preps,"common prepositions in this document.")
+print()
+
+print("There are",pros,"common pronouns in this document.")
+print()
+
   
 #proper nouns
 fp=open("HODwoutenters.txt","r")
@@ -60,7 +102,9 @@ capped = [k for k in capped if k not in["I", "The", "A","In","We","On","He","It"
                                        'Behind','Like', 'Just','Am',"That's","Hadn't",'Do',"Can't",'Six','Moreover','Very','Everyone','Certainly'
                                        ,'Yes','Rivets','Fine']]
 print(capped) #list of proper nouns
+print()
 print(len(capped)) #number of proper nouns
+print()
 
 #conjunctions
 import re
@@ -75,6 +119,7 @@ for x in book:
 
 Corrdinating = [k for k in words if k in ["For","for","And","and","But","but","Or","or","Yet","yet","So","so"]]
 print("The number of Corrdinating Conjunctions is", len(Corrdinating))
+print()
 
 Subordinating = [k for k in words if k in ["after","although","as","as if","if","in order that","in case",
                                           "as long as","as much as","as soon as","lest","once","only if",
@@ -82,8 +127,11 @@ Subordinating = [k for k in words if k in ["after","although","as","as if","if",
                                           "by the time", "even if",  "even though","than","that","though","till",
                                            "unless","until","when","whenever","where","wherever","while"]]
 print("The number of Subordinating Conjunctions is", len(Subordinating))
+print()
 
 Correlative = [k for k in words if k in ["both","either","neither","not only","whether"]]
+
+print("Here is a sorted word frequency list:",sorted_frequencies)
 
 
 
