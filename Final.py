@@ -131,8 +131,6 @@ print()
 
 Correlative = [k for k in words if k in ["both","either","neither","not only","whether"]]
 
-print("Here is a sorted word frequency list:",sorted_frequencies)
-
 
 #pronouns
 fp=open("HODwoutenters.txt","r")
@@ -175,7 +173,8 @@ print("The number of Possessive Pronouns is", len(Possessive))
 SubjectandObject= [k for k in words if k in ["I","you","she","he","it","we","they","She","He","It","We","You","They"
                                             ,"me","her","him","us","them","Me","Her","Him","Us","Them"]]
 print("The number of SubjectandObject Pronouns is", len(SubjectandObject))
-
+print()
+print("Here is a sorted word frequency list:",sorted_frequencies)
 
 
 
