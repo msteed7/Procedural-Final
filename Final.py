@@ -134,5 +134,51 @@ Correlative = [k for k in words if k in ["both","either","neither","not only","w
 print("Here is a sorted word frequency list:",sorted_frequencies)
 
 
+#pronouns
+fp=open("HODwoutenters.txt","r")
+contents=fp.read()
+contents=contents.replace(","," ")
+seeker = re.compile("[\.!?]")
+book=seeker.split(contents)
+words=[]
+for x in book:
+    for j in x.split():
+        words.append(j)
+
+Demonstrative = [k for k in words if k in ["this","This","These","these","that","That","Those","those"]]
+print("The number of Demonstrative Pronouns is", len(Demonstrative))
+
+Personal= [k for k in words if k in ["I","me","Me","we","We","Us","us","you","You","She","she","Her","her","he","Him","him","He","It","it","they","They","Them","them"]]
+print("The number of Personal Pronouns is", len(Personal))
+
+Relative= [k for k in words if k in ["That","that","which","Which","Who","who","Whom","whom","Whose","whose","Whichever","whichever","Whoever","whoever","Whomever","whomever"]]
+print("The number of Relative Pronouns is", len(Relative))
+
+
+Indefinite= [k for k in words if k in ["anyone","Anyone","anybody","Anybody","Anything","anything","Each","each","either","Either","everybody","Everybody","Everyone","everyone","everything","Everything","neither","Neither","Nobody","nobody","no one","No one","Nothing","nothing","one","One","somebody","Somebody","someone","Someone","something","Something",
+                                      "both","Both","few","Few","many","Many","several","Several"
+                                      ,"all","All","any","Any","most","Most","none","None","some","Some"]]
+print("The number of Indefinite Pronouns is", len(Indefinite))
+
+Reflexive= [k for k in words if k in ["myself","Myself","ourselves","Ourselves","yourself","Yourself","Yourselves","yourselves","himself","Herself","herself","Herself","itself","Itself","themselves","Themselves"]]
+print("The number of Reflexive Pronouns is", len(Reflexive))
+
+
+Interrogative= [k for k in words if k in ["what","who","which","whom","whose","What","Who","Which","Whom","Whose"]]
+print("The number of Interrogative Pronouns is", len(Interrogative))
+
+
+Possessive= [k for k in words if k in ["my","our","your","his","her","its","their","My","Our","Your","His","Her","Its","Their","mine","yours","hers","ours","theirs","Mine","Yours","Hers","Ours","Theirs"]]
+print("The number of Possessive Pronouns is", len(Possessive))
+
+
+SubjectandObject= [k for k in words if k in ["I","you","she","he","it","we","they","She","He","It","We","You","They"
+                                            ,"me","her","him","us","them","Me","Her","Him","Us","Them"]]
+print("The number of SubjectandObject Pronouns is", len(SubjectandObject))
+
+
+
+
+
 
 
